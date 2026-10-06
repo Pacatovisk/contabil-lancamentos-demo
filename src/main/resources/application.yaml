@@ -1,3 +1,23 @@
 spring:
   application:
-    name: Sistema de Lancamentos Contabeis
+      name: Contabilidade
+
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:FREE
+    username: system
+    password: minhaSenha123
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      # 'update' cria ou altera tabelas sem apagar dados existentes.
+      # 'create-drop' é útil apenas para testes (apaga tudo ao fechar).
+      ddl-auto: update
+    show-sql: true        # Exibe o SQL no console (útil para debug)
+    properties:
+      hibernate:
+        format_sql: true  # Deixa o SQL legível no console
+        # Necessário para garantir que o Hibernate use as Sequences corretamente no Oracle
+        id:
+          new_generator_mappings: true
